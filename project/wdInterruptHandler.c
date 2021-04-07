@@ -9,3 +9,4 @@ __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
     blink_count = 0;
   }
 }
+//3/31 1:14:00 Goes over blinking
