@@ -26,8 +26,8 @@ switch_init()			/* setup switch */
   P2OUT |= SWITCHES;		/* pull-ups for switches */ //able to turn on
   P2DIR &= ~SWITCHES;		/* set switches' bits for input */ //able to turn off swithces
   switch_update_interrupt_sense();
-  led_update();
-  //state_advance();
+  //led_update();
+  state_advance();
 }
 
 void
@@ -51,7 +51,8 @@ switch_interrupt_handler() //Starting point of interrupt
     {state = 3;}
   if(switch4)
     {state = 4;}
-  
+  //if switches 0-3 switch 1 sets red off, switch 2 red on
+  //if switches 1-4 switch 1 sets all off, switch 2 green on and switch 3 green and red on 
   //switch_state_changed = 1; not in use like in button demo
   state_advance(); //could move back to not check all switches
 }
