@@ -1,7 +1,7 @@
 #include <msp430.h>
 #include "switches.h"
 #include "led.h"
-//#include "stateMachines.c"
+#include "stateMachines.c"
 
 char switch1, switch2, switch3, switch4, switch_state_changed; /* effectively boolean */
 
@@ -41,7 +41,7 @@ switch_interrupt_handler() //Starting point of interrupt
   switch1 = (p2val & SW1) ? 0 : 1; /* 0 when SW1 is up */
   switch2 = (p2val & SW2) ? 0 : 1; //if s2 then true else false
   switch3 = (p2val & SW3) ? 0 : 1; //cannot assign state = # on the same line side
-  switch4 = (p2val & SW3) ? 0 : 1; 
+  switch4 = (p2val & SW4) ? 0 : 1; 
 
 
   if(switch1)

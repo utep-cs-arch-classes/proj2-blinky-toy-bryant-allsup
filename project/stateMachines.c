@@ -14,7 +14,7 @@ void state_advance()		/* alternate between toggling red & green */
   switch(state)
     {
     case 1 :
-      green_on = 0;
+      green_on = 0; //state1()
       red_on = 0;
       changed = 1; 
       break;
@@ -39,6 +39,4 @@ void state_advance()		/* alternate between toggling red & green */
   led_changed = changed;
   led_update();
 }
-
-
 
