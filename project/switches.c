@@ -27,6 +27,7 @@ switch_init()			/* setup switch */
   P2DIR &= ~SWITCHES;		/* set switches' bits for input */ //able to turn off swithces
   switch_update_interrupt_sense();
   //led_update();
+  state=3;
   state_advance();
 }
 
