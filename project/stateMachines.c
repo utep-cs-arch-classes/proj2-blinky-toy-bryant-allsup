@@ -3,6 +3,7 @@
 #include "led.h"
 #include "switches.h"
 #include "buzzer.h"
+#include "state.s"
 
 
 char count = 0;
