@@ -2,36 +2,39 @@
 #include "stateMachines.h"
 #include "led.h"
 #include "switches.h"
+#include "buzzer.h"
 
 
+char count = 0;
+static enum{off=0,dim=1,on=2}brightness;
+
+void bright()
+{brightness = (brightness+1)%3;}
+
+void counter()
+{count = (count+1)%3;}
 
 void state_advance()		/* alternate between toggling red & green */
 {
-  
-  char changed = 0;  
-
+  char changed = 0; 
 
   switch(state)
     {
     case 1 :
-      green_on = 0; //state1()
-      red_on = 0;
-      changed = 1; 
+      case_one();
+      changed=1;
       break;
     case 2:
-      green_on = 0;
-      red_on = 1;
-      changed = 1;
+      case_two();
+      changed=1;
       break;
     case 3:
-      green_on = 1;
-      red_on = 0;
-      changed = 1;
+      case_three();
+      changed=1;
       break;
     case 4:
-      green_on = 1;
-      red_on = 1;
-      changed = 1;
+      case_four();
+      changed=1;
       break;
     }
   
@@ -40,3 +43,28 @@ void state_advance()		/* alternate between toggling red & green */
   led_update();
 }
 
+void case_one()
+{
+  green_on = 0;
+  red_on=0;
+  buzzer_set_period(0);
+}
+void case_two()
+{
+  counter();
+  green_on=0;
+  red_on=(count<1);
+}
+void case_three()
+{
+  counter();
+  green_on=(count<1);
+  red_on=0;
+  //buzzer_set_period(1000);
+}
+void case_four()
+{
+  green_on = 1;
+  red_on=1;
+  //buzzer_set_period(500);
+}
