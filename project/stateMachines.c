@@ -7,6 +7,7 @@
 
 char count = 0;
 static enum{off=0,dim=1,on=2}brightness;
+int sound = 1000;
 
 void bright()
 {brightness = (brightness+1)%3;}
@@ -54,17 +55,21 @@ void case_two()
   counter();
   green_on=0;
   red_on=(count<1);
+  sound=1000;
+  buzzer_set_period(sound);
 }
 void case_three()
 {
   counter();
   green_on=(count<1);
   red_on=0;
-  //buzzer_set_period(1000);
+  sound+=100;
+  buzzer_set_period(sound);
 }
 void case_four()
 {
   green_on = 1;
   red_on=1;
-  //buzzer_set_period(500);
+  sound-=100;
+  buzzer_set_period(sound);
 }

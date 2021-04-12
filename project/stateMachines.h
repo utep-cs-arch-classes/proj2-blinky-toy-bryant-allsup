@@ -12,5 +12,6 @@ void case_three();
 void case_four();
 
 extern char count;
+extern int sound;
 
 #endif // included
