@@ -11,6 +11,8 @@ void case_two();
 void case_three();
 void case_four();
 
+//extern void calls();
+
 extern char count;
 extern int sound;
 

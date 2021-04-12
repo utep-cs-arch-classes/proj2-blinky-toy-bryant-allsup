@@ -8,7 +8,8 @@ __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
 
   switch(state){
   case 1:
-    {}
+    {//calls();
+    }
     break;
   case 2:
     if(++blink_count==125)
